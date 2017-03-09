@@ -1,0 +1,577 @@
+\documentclass[10pt]{article}
+\oddsidemargin -.2in
+\evensidemargin -.2in
+\topmargin -.2in
+\textwidth 6.9in
+\textheight 8.7in
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{latexsym, amssymb, bbm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[linesnumbered,vlined]{algorithm2e}
+\SetEndCharOfAlgoLine{}
+\usepackage{changepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{cla}[thm]{Claim}
+\newtheorem{con}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{axiom}{Axiom}
+\newtheorem*{note}{Note}
+\newtheorem*{question}{Question}
+
+\theoremstyle{remark}
+\newtheorem{case}{Case}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% EDIT HERE %$%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\name}{Casper Neo}
+\newcommand{\classname}{Machine Learning}
+\newcommand{\classnumber}{CMSC 254}
+\newcommand{\due}{28 February 2017}
+\newcommand{\num}{5}
+\newcommand{\type}{Homework}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%-------------------------------------------------------
+
+
+%-------------------------------------------------------
+
+\newcommand{\lecture}[1]{\centerline{\fbox{\textbf{#1}}}}
+\newcommand{\que}[2] {\vspace{.25in} \fbox{#1} #2 \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% SHORTCUTS FOR BLACKBOARD BOLD
+\def\C{\mathbb{C}}
+\def\N{\mathbb{N}}
+\def\Q{\mathbb{Q}}
+\def\R{\mathbb{R}}
+\def\Z{\mathbb{Z}}
+\def\1{\mathbbm{1}}
+\def\P{\mathbb{P}}
+\def\0{\emptyset}
+
+% SHORTCUTS FOR MATH BOLD FONT
+\def\ba{\mathbf{a}}
+\def\bb{\mathbf{b}}
+\def\be{\mathbf{e}}
+\def\bm{\mathbf{m}}
+\def\bh{\mathbf{h}}
+\def\bu{\mathbf{u}}
+\def\bw{\mathbf{w}}
+\def\bv{\mathbf{v}}
+\def\bS{\mathbf{\Si}}
+\def\bmu{\boldsymbol{\mu}}
+\def\bx{\mathbf{x}}
+\def\by{\mathbf{y}}
+\def\bz{\mathbf{z}}
+\def\bzero{\mathbf{0}}
+\def\bone{\mathbf{1}}
+
+% SHORTCUTS FOR GREEK LETTERS
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\G{\Gamma}
+\def\d{\delta}
+\def\D{\Delta}
+\def\e{\varepsilon}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\m{\mu}
+\def\r{\rho}
+\def\s{\sigma}
+\def\t{\tau}
+\def\th{\theta}
+\def\x{\xi}
+\def\vp{\varphi}
+\def\n{\nabla}
+\def\w{\omega}
+\def\z{\zeta}
+\def\vp{\varphi}
+\def\p{\phi}
+\def\Ph{\Phi}
+\def\L{\Lambda}
+\def\Si{\Sigma}
+\def\Th{\Theta}
+\def\O{\Omega}
+
+\def\el{\ell}
+
+% SHORTCUTS FOR MATH SCRIPT
+\def\sR{\mathscr{R}}
+\def\sA{\mathscr{A}}
+\def\sC{\mathscr{C}}
+\def\sM{\mathscr{M}}
+\def\sF{\mathscr{F}}
+\def\sB{\mathscr{B}}
+\def\sL{\mathscr{L}}
+
+% SHORTCUTS FOR MATH CAPITALS
+\def\A{\mathcal{A}}
+\def\cC{\mathcal{C}}
+\def\cE{\mathcal{E}}
+\def\cF{\mathcal{F}}
+\def\cH{\mathcal{H}}
+\def\cL{\mathcal{L}}
+\def\cM{\mathcal{M}}
+\def\cP{\mathcal{P}}
+\def\cU{\mathcal{U}}
+
+
+\def\i{^{-1}}
+\newcommand{\fin}{f^{-1}}
+\def\lp{\mathop{\rm lp}}
+\def\slp{\mathop{\rm slp}}
+\def\ext{\mathop{\rm ext}}
+\def\sep{\mathop{\rm sep}}
+\def\rel{\mathop{\rm rel}}
+\def\lub{\mathop{\rm lub}}
+\def\glb{\mathop{\rm glb}}
+
+\def\ds{\displaystyle}
+
+\newcommand{\lpvar}[1]{\,\textrm{lp}_{#1}\,}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\fl}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\cl}[2]{\left\lceil \frac{#1}{#2} \right\rceil}
+\newcommand{\md}[1]{(\text{mod } #1)}
+\newcommand{\cs}[1]{\begin{case} #1 \end{case}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\set}[1]{\{ #1 \}}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+
+\newcommand{\upint}[2]{
+  \overline{\int_{#1}^{#2}}
+}
+\newcommand{\loint}[2]{
+  \underline{\int_{#1}^{#2}}
+}
+
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\DeclareMathOperator*{\pr}{\mathbb{P}}
+
+\newenvironment{piecewise}{\left\lbrace
+\begin{matrix}}
+{
+\end{matrix}
+\right.
+}
+
+
+
+\def\defeq{\stackrel{\text{\tiny def}}=}
+
+\def\la{\langle}
+\def\ra{\rangle}
+
+\def\ben{\begin{enumerate}}
+\def\een{\end{enumerate}}
+
+\def\ptl{\partial}
+\newcommand{\pd}[2]{\frac{\ptl#1}{\ptl #2}}
+
+\def\tb{\textbf}
+\def\^{\wedge}
+\def\del{\nabla}
+
+% Little Stats things
+\def\iid{\stackrel{iid}\sim}
+\def\indep{\!\perp\!\!\!\perp}
+
+
+% SHORTCUTS FOR LIMITS
+\def\ltx{\lim_{t\to x}}
+\def\lxp{\lim_{x\to p}}
+\def\lxa{\lim_{x\to a}}
+\def\lni{\lim_{n\to\infty}}
+\def\lsni{\limsup_{n\to\infty}}
+\def\lxi{\lim_{x\to\infty}}
+\def\lxz{\lim_{x\to0}}
+\def\lhz{\lim_{h\to0}}
+\def\ltz{\lim_{t\to0}}
+
+% SHORTCUTS FOR SUMMATIONS
+\def\sion{\sum_{i=1}^n}
+\def\sjon{\sum_{j=1}^n}
+\def\sjom{\sum_{j=1}^m}
+\def\snoi{\sum_{n=1}^\infty}
+\def\sioi{\sum_{i=1}^\infty}
+\def\snzi{\sum_{n=0}^\infty}
+\def\snzN{\sum_{n=0}^N}
+\def\skoi{\sum_{k=1}^\infty}
+\def\siok{\sum_{i=1}^k}
+\def\skon{\sum_{k=1}^n}
+\def\skzn{\sum_{k=0}^n}
+\def\pion{\prod_{i=1}^n}
+\def\sjok{\sum_{j=1}^k}
+\def\siod{\sum_{i=1}^d}
+\def\sjod{\sum_{j=1}^d}
+
+% SHORTCUTS FOR INTEGRALS
+\def\ipp{\int_{-\pi}^\pi}
+\def\iii{\int_{-\infty}^{\infty}}
+\def\izp{\int_0^\pi}
+\def\iztp{\int_0^{2\pi}}
+\def\izr{\int_0^r}
+\def\izo{\int_0^1}
+\def\ioi{\int_1^\infty}
+\def\iab{\int_a^b}
+\def\izi{\int_0^\infty}
+\def\riea{\sR(\a)}
+\newcommand{\eval}[2]{\Big\vert_{#1}^{#2}}
+
+% SHORTCUTS FOR ENVIRONMENTS
+\newcommand{\al}[1]{\begin{align*}#1\end{align*}}
+\newcommand{\aleq}[1]{\begin{equation}\begin{aligned}[b]#1\end{aligned}\end{equation}}
+\newcommand{\bigb}[1]{\bigg(#1\bigg)}
+\newcommand{\prf}[1]{\begin{proof}#1\end{proof}\vspace{3mm}}
+\newcommand{\bmtx}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\enum}[2]{\begin{enumerate}[#1]#2\end{enumerate}}
+\newcommand{\pwise}[1]{\begin{piecewise}#1\end{piecewise}}
+\newcommand{\inm}[1]{\norm{#1}_2}
+\newcommand{\enviro}[2]{\begin{#1}#2\end{#1}}
+\newcommand{\tabler}[2]{\begin{center}\begin{tabular}{#1}#2\end{tabular}\end{center}}
+
+\newcommand{\seq}[2]{\{#1_#2\}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%--------------------------------------------------------------
+\pagestyle{fancy}
+
+\lhead{\name}
+\chead{\classnumber\space\space-\space\type\space\num}
+\rhead{\due}
+
+\title{
+	\vspace{-20mm}
+    \classnumber\\
+	\classname\\
+    \type \space \num\\
+}
+\author{
+	\name \\\small
+}
+\author
+
+\date{
+	\due\\
+}
+
+\maketitle
+%--------------------------------------------------------------
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item
+
+        Consider the algorithm where for every letter in $\ol a$
+        and for every letter in $\ol b$ we check if there is a $\k$ length
+        string match. Then this clearly finds $k_{\k}(\ol a,\ol b)$ and
+        the algorithm is $O( l_{\ol a} l_{\ol b} \k)$ upon examining the loops.
+        \begin{center}
+        \begin{minipage}{.9\textwidth}
+        \begin{algorithm}[H]
+            \KwData{Strings $\ol a,\ol b$, integer $\k$}
+            \KwResult{ $k_{\k}(\ol a,\ol b)$}
+            $n=0$\\
+            \For{$i=0,i<l_{\ol a} - k, i++$}{
+                \For{$j=0,j<l_{\ol b}-k, j++$}{
+                    $substr = True$ \\
+                    \For{$p=0,p<k,p++$}{
+                        \If{$\ol a_{i+p} \not= \ol b_{j+p}$}{
+                            $substr = False$ \\
+                            \textbf{Break}
+                        }
+                    }
+                    \lIf{substr}{n++}
+                }
+            }
+            \Return{n}
+
+        \end{algorithm}
+        \end{minipage}
+        \end{center}
+
+        Observe that
+        $k_\k(\ol a,\ol b) = \sum_{\ol s\in \Sigma^\k}n_{\ol s}(\ol a)n_{\ol s}(\ol b)$
+        is the inner product over the hilbert space reached by the function
+        $\phi(\ol a) \to (n_{s_1}(\ol a) ... n_{s_{\abs{\Sigma^\k}}}(\ol a))^T$
+        hence $k_\k$ is positive semi definite.
+
+
+        \item
+        This kernel counts the number string matches between $\ol a$ and $\ol b$
+        allowing for gaps in the strings. Analogously to part (a), this kernel
+        corresponds to the Hilbert space reached by the function
+        $\phi(\ol a) \to (n_{s_1}^*(\ol a) ... n^*_{s_{\abs{\Sigma^\k}}}(\ol a))^T$
+        and so it inherits positive semi-definiteness from the inner product.
+
+        \begin{enumerate}
+            \item Consider the algorithm
+            which has $O(\abs{\Sigma}(l_{\ol a} + l_{\ol b}))$ character
+            comparisons.
+            \begin{center}
+            \begin{minipage}{.9\textwidth}
+            \begin{algorithm}[H]
+                \KwData{Strings $\ol a,\ol b$}
+                \KwResult{ $k_1^*(\ol a,\ol b)$}
+                $k = 0$\\
+                \For{$s\in \Sigma$}{
+                    $as = 1$; $bs = 1$ \\
+                    \For{$i=0,i<l_{\ol a}, i++$}{
+                        \lIf{$\ol a_i == s$}{
+                            $as ++$
+                        }
+                    }
+                    \For{$j=0,j<l_{\ol b},j++$}{
+                        \lIf{$\ol b_j == s$}{
+                            $bs ++$
+                        }
+                    }
+                    $k = k + as \cdot bs$ \\
+                }
+                \Return k
+
+            \end{algorithm}
+            \end{minipage}
+            \end{center}
+
+            \item Observe $k^*_p(\ol a_{0:p-1},\ol b_{0:p-1})
+                = \1(\ol a_{0:p-1} = \ol b_{0:p-1})$
+                where $\1$ is the indicator function.
+                Hence the following 6 lines of code return the result in $O(p)$
+                checks.
+                \begin{center}
+                \begin{minipage}{.9\textwidth}
+                \begin{algorithm}[H]
+                    \KwData{Strings $\ol a,\ol b$}
+                    \KwResult{ $k_p^*(\ol a_{0:p-1},\ol b_{0:p-1})$}
+                    $k = 1$\\
+                    \For{$i=0,i<p,i++$}{
+                        \If{$\ol a_i \not= \ol b_i$}{
+                            $k=0$\\
+                            \textbf{Break}
+                        }
+                    }
+
+                    \Return k
+
+                \end{algorithm}
+                \end{minipage}
+                \end{center}
+
+
+            \item \begin{enumerate}
+                \item Observe $k_p^*$ is the number of gappy substring of length $p$
+                pairs between $\ol a$ and $\ol b$. So finding
+                $k_p^*(\ol a_{0:N+1},\ol b_{0:j})$ is just
+                $k_p^*(\ol a_{0:N},b_{0:j})$ plus the number of new gappy
+                substring of length $p$ pairs. Since we're adding $\ol a_{n+1}$,
+                when considering the substrings of length $p-1$ in $\ol b_{0,i}$
+                we need to add any matches between $\ol b_{l}$ and $\ol a_{N+1}$
+                where $l$ is between $i+1$ and $j$. Observe
+                $k_{p-1}^*(\ol a_{0:N},\ol b_{0,i}) -
+                 k_{p-1}^*(\ol a_{0:N},\ol b_{0,i-1})$ is the number of gappy
+                 substring of length $p-1$ matches that end at $b_i$.
+                 Therefore we have the formula
+                $$
+                    k_p^*(\ol a_{0:N+1},\ol b_{0:j}) =
+                    k_p^*(\ol a_{0:N},b_{0:j}) +
+                    \sum_{i=0}^{j-1}
+                    (k_{p-1}^*(\ol a_{0:N},\ol b_{0:i})
+                    -k_{p-1}^*(\ol a_{0:N},\ol b_{0:i-1}))
+                    \sum_{l = i+1}^{j}
+                    \1(
+                        \ol b_{l} = \ol a_{N+1}
+                    )
+                $$
+
+                \item Analogously to part $A.$ but exchanging $\ol a$ and $\ol b$.
+
+
+                $$
+                    k_p^*(\ol a_{0:i},\ol b_{0:M+1}) =
+                    k_p^*(\ol a_{0:i},b_{0:M}) +
+                    \sum_{j=0}^{i-1}
+                    (k_{p-1}^*(\ol a_{0:j},\ol b_{0:M})
+                    -k_{p-1}^*(\ol a_{0:i-1},\ol b_{0:M}))
+                    \sum_{l = j+1}^{i}
+                    \1(
+                        \ol a_{l} = \ol b_{M+1}
+                    )
+                $$
+
+
+                \item Combining the previous parts we get an algorithm which
+                examining the loops is $O(l_{\ol a}l_{\ol b}k)$ in character
+                checks.
+                \begin{center}
+                \begin{minipage}{.9\textwidth}
+                \begin{algorithm}[H]
+                    \KwData{Strings $\ol a,\ol b$, integer $\k$}
+                    \KwResult{ $k_\k^*(\ol a,\ol b)$}
+                     Let $A$ be a $l_{\ol a}\times l_{\ol b}\times \k$ matrix \\
+                     $n=0$\\
+                     \For{$i=0,...,l_{\ol a}-1$}{
+                        \For{$i=0,...,l_{\ol b}-1$}{
+                            \lIf{$\ol a[i] = \ol b[j]$}{$n+=1$}
+                            $A[i,j,1] = n$
+                        }
+                     }
+                     \For{$k = 2,...,\k$}{
+                        $A[0,0,k] = A[1,0,k] = A[0,1,k] = 0$\\
+                        \For{$N=1,...,l_{\ol a}-1$}{
+                            \For{$M = 1,..., l_{\ol b}-1$}{
+                                $
+                                    A[N+1,M,k] = A[N,M,k] + \\
+                                    \sum_{n=0}^{M-1}
+                                    (A[N,n,k-1] - A[N,n-1,k-1])
+                                    \sum_{l=n+1}^M\1(\ol b[l] = \ol a[N+1])
+                                $ \\
+                                $
+                                    A[N,M+1,k] = A[N,M,k] + \\
+                                    \sum_{n=0}^{N-1}
+                                    (A[n,M,k-1] - A[n-1,M,k-1])
+                                    \sum_{l=n+1}^N\1(\ol b[M+1] = \ol a[l])
+                                $ \\
+
+                            }
+                        }
+                     }
+                     \Return{$A[l_{\ol a},l_{\ol b},\k]$}
+
+                \end{algorithm}
+                \end{minipage}
+                \end{center}
+
+
+            \end{enumerate}
+        \end{enumerate}
+
+
+
+    \end{enumerate}
+    \item
+    The following follow from the definition of probability in graphical
+    models and the relationships described by the graphs in question.
+    $$
+        \P(\bx) = \prod_{v\in V}\P(x_v | x_p : p \in Parents(v))
+    $$
+    \begin{enumerate}
+        \item Since $\P(X_a,X_b,X_c) = \P(X_a|X_c)\P(X_b|X_c)\P(X_c)$:
+        \al{
+            \P(X_a,X_b) &= \sum_{x_c}\P(X_a,X_b,X_c=x_c) \\
+                & = \sum_{x_c} \P(X_a|x_c)\P(X_b|x_c)\P(x_c) \\
+                &\not= \P(X_a)\P(X_b)
+        }
+        Therefore $ X_a \not\indep X_b$
+        \al{
+            \P(X_a,X_b | X_c)
+                &= \frac{\P(X_a,X_b,X_c)}{\P(X_c)} \\
+                &= \P(X_a|X_c)\P(X_b|X_c)
+        }
+        Therefore $(X_a \indep X_b) | X_c$.
+
+        \item Since $\P(X_a,X_b,X_c) = \P(X_a)\P(X_b)\P(X_c | X_a,X_B)$
+        \al{
+            \P(X_a,X_b)
+                &= \sum_{x_c}\P(X_a,X_b,X_c=x_c) \\
+                &= \sum_{x_c}\P(X_a)\P(X_b)\P(X_c=x_c |X_a,X_b) \\
+                &= \P(X_a,X_b)
+        }
+        Therefore $X_a\indep X_b$.
+        \al{
+            \P(X_a,X_b|X_c)
+                &= \frac{\P(X_a,X_b,X_c)}{\P(X_c)}\\
+                &= \frac{\P(X_a)\P(X_b)\P(X_c|X_a,X_b)}{\P(X_c)}  \\
+                &\not= \P(X_a| X_c) \P(X_b | X_c)
+        }
+        Therefore $(X_a\not\indep X_b)|X_c$.
+
+    \end{enumerate}
+
+    \item $a,b$ are specified by 1 number each. $c,e$ depend on one other
+    variable and thus are specified with 2 numbers each. $d$ depends on
+    3 other variables and so requires 8 numbers. Hence the following graph may
+    be specified with 14 parameters.
+
+    \begin{figure}[H]
+        \vspace{4cm}
+        \center
+        \includegraphics[width=.4\textwidth]{im1.jpg}
+
+        \caption{My amazing drawing}
+    \end{figure}
+
+    \item \begin{itemize}
+        \item $E\indep G | F$
+            True since $G$ only depends on F, conditional on
+            $F$ it is independent of everything.
+        \item $A\indep C | B,G$
+            False since information about $A$ and $C$ is captured in $G$ so $A$
+            is partially specified by $C$
+        \item $B\indep C$
+            True since neither of them have parents.
+        \item $A\indep B | C,G$
+            False since information about $A$ and $B$ is captured in $G$ so $A$
+            is partially specified by $B$
+
+
+    \end{itemize}
+    \item $$
+        \P(a,b,c,d,e) = \P(a)\P(e)\P(b|a)\P(d|a,e)\P(c|b,d)
+    $$
+
+    This means \begin{itemize}
+        \item $a\indep e$
+        \item $e\indep b$
+        \item $a\indep c|b,d$
+        \item $e\indep c|d$
+        \item $b\indep d|a$
+    \end{itemize}
+
+\end{enumerate}
+
+%------------------------------------------------------------------------------------------------------------
+\end{document}
